@@ -6,7 +6,7 @@ import UserPicture from 'components/User/UserPicture'
 export default class UserList extends React.Component {
   isSeenUserListShown() {
     const userCount = this.props.users.length
-    if (userCount > 0 && userCount <= 10) {
+    if (userCount > 0 && userCount <= 114514) {
       return true
     }
 
