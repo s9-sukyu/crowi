@@ -12,7 +12,13 @@ services:
       REDIS_URL: redis://redis:6379/crowi
       ELASTICSEARCH_URI: elasticsearch:9200/
       PLANTUML_URI: //localhost:8080
-      FILE_UPLOAD: local
+      FILE_UPLOAD: conoha
+      CONOHA_USER:
+      CONOHA_PASS:
+      CONOHA_AUTH_URL:
+      CONOHA_REGION:
+      CONOHA_TENANT_ID:
+      CONOHA_CONTAINER:
     volumes:
       - ./:/crowi
       - /crowi/node_modules
