@@ -21,6 +21,7 @@
 @import 'portal';
 @import 'search';
 @import 'attachments';
+@import 'trap-customized';
 @import 'share';
 @import 'tree';
 
@@ -454,3 +455,4 @@ input.searching {
 // import
 @import '../../node_modules/highlight.js/styles/tomorrow-night.css';
 @import '../../node_modules/diff2html/dist/diff2html.css';
+@import '../../node_modules/katex/dist/katex.min.css';
