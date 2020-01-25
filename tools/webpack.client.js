@@ -62,6 +62,7 @@ const config = {
       { from: path.join(ROOT, 'node_modules/reveal.js/lib/css'), to: path.join(ROOT, 'public/js/reveal/lib/css') },
       { from: path.join(ROOT, 'node_modules/reveal.js/lib/js'), to: path.join(ROOT, 'public/js/reveal/lib/js') },
       { from: path.join(ROOT, 'node_modules/reveal.js/plugin'), to: path.join(ROOT, 'public/js/reveal/plugin/') },
+      { from: path.join(ROOT, 'node_modules/katex/dist/fonts'), to: path.join(ROOT, 'public/css/fonts') },
     ]),
   ],
 }
