@@ -1,0 +1,33 @@
+@mixin container($text, $background, $border) {
+  color: $text;
+  background-color: $background;
+  border: 1px solid $border;
+}
+%cotainer {
+  padding: 15px;
+  margin-bottom: 12px;
+  border-radius: 4px;
+
+  p:last-of-type {
+    margin-bottom: 0;
+  }
+}
+
+.wiki {
+  .success {
+    @extend %cotainer;
+    @include container(#3c763d, #dff0d8, #d6e9c6);
+  }
+  .info {
+    @extend %cotainer;
+    @include container(#31708f, #d9edf7, #bce8f1);
+  }
+  .warning {
+    @extend %cotainer;
+    @include container(#8a6d3b, #fcf8e3, #faebcc);
+  }
+  .danger {
+    @extend %cotainer;
+    @include container(#a94442, #f2dede, #ebccd1);
+  }
+}
