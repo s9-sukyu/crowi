@@ -1,9 +1,6 @@
 config/default.js
 node_modules/
 bower_components/
-public/js/*
-public/css/*
-public/uploads/*
 .env
 data
 npm-debug.log
