@@ -128,11 +128,7 @@ Crowi.userPicture = function(user) {
     return '/images/userpicture.png'
   }
 
-  if (user.image && user.image != '/images/userpicture.png') {
-    return user.image
-  } else {
-    return '/images/userpicture.png'
-  }
+  return `//q.trap.jp/api/1.0/public/icon/${user.username}`
 }
 
 Crowi.modifyScrollTop = function() {
