@@ -6,11 +6,7 @@ export default class UserPicture extends React.Component {
   getUserPicture(user) {
     // from swig.setFilter('picture', function(user)
 
-    if (user.image && user.image != '/images/userpicture.png') {
-      return user.image
-    } else {
-      return '/images/userpicture.png'
-    }
+    return `//q.trap.jp/api/1.0/public/icon/${user.username}`
   }
 
   getClassName() {
