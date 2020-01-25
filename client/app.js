@@ -5,7 +5,7 @@ import i18n from './i18n'
 import moment from 'moment'
 
 import Crowi from './util/Crowi'
-import CrowiRenderer from './util/CrowiRenderer'
+import CrowiRenderer from './util/TrapCustomized/CrowiRenderer'
 import CrowiAuth from './util/CrowiAuth'
 
 import HeaderSearchBox from 'components/HeaderSearchBox'
