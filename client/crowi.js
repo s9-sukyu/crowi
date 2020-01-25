@@ -383,7 +383,8 @@ $(function() {
 
         var markdown = Crowi.unescape($(contentId).html())
         var parsedHTML = crowiRenderer.render(markdown, $revisionBody.get(0))
-        $revisionBody.html(parsedHTML)
+        var DOMPurify = require('dompurify')
+        $revisionBody.html(DOMPurify.sanitize(parsedHTML, { FORBID_TAGS: ['style'], FORBID_ATTR: ['style'] }))
 
         $('.template-create-button', revisionBody).on('click', function() {
           var path = $(this).data('path')
