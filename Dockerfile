@@ -1,4 +1,4 @@
-FROM node:8.11.2
+FROM node:12.14.1-buster-slim as builder
 
 ARG NODE_ENV="production"
 

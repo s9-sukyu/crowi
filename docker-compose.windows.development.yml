@@ -19,19 +19,11 @@ services:
     ports:
       - 3000:3000
     links:
-      - mongodb
       - elasticsearch
       - redis
       - plantuml
-    command: bash -c "npm install && npm run dev"
-
-  mongodb:
-    image: mongo:3.6.3
-    volumes:
-      - mongodb:/data/db
-    restart: unless-stopped
-    ports:
-      - 27017:27017
+    networks:
+      - crowi_network
 
   elasticsearch:
     build:
@@ -52,18 +44,25 @@ services:
       - ./data/elasticsearch:/usr/share/elasticsearch/data
     ports:
       - 9200:9200
+    networks:
+      - crowi_network
 
   redis:
     image: redis:4.0.8
     restart: unless-stopped
     ports:
       - 6379:6379
+    networks:
+      - crowi_network
 
   plantuml:
     image: plantuml/plantuml-server:latest
     restart: unless-stopped
     ports:
       - 8080:8080
+    networks:
+      - crowi_network
 
-volumes:
-  mongodb:
+networks:
+  crowi_network:
+    external: true
