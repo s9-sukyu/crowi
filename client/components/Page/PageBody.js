@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import DOMPurify from 'dompurify'
 
 export default class PageBody extends React.Component {
   constructor(props) {
@@ -40,7 +41,7 @@ export default class PageBody extends React.Component {
       body = this.getHighlightBody(body, this.props.highlightKeywords)
     }
 
-    return { __html: body }
+    return { __html: DOMPurify.sanitize(body, { FORBID_TAGS: ['style'], FORBID_ATTR: ['style'] }) }
   }
 
   render() {
