@@ -2,7 +2,7 @@ import i18n from 'i18next'
 import LngDetector from 'i18next-browser-languagedetector'
 import { reactI18nextModule } from 'react-i18next'
 
-import en from 'locales/en/translation.yml'
+import en from 'locales/en-US/translation.yml'
 import ja from 'locales/ja/translation.yml'
 
 export default () => {
