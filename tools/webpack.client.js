@@ -2,6 +2,8 @@ const path = require('path')
 const webpack = require('webpack')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 
+const BrotliPlugin = require('brotli-webpack-plugin')
+
 const ROOT = path.join(__dirname, '/../')
 
 const config = {
@@ -64,6 +66,10 @@ const config = {
       { from: path.join(ROOT, 'node_modules/reveal.js/plugin'), to: path.join(ROOT, 'public/js/reveal/plugin/') },
       { from: path.join(ROOT, 'node_modules/katex/dist/fonts'), to: path.join(ROOT, 'public/css/fonts') },
     ]),
+    new BrotliPlugin({
+      test: /\.(?:js|css)(\?.*)?$/i,
+      minRatio: 0.9,
+    }),
   ],
 }
 
