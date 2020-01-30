@@ -21,7 +21,7 @@ export default class UserPicture extends React.Component {
   render() {
     const user = this.props.user
 
-    return <img src={this.getUserPicture(user)} alt={user.username} className={this.getClassName()} />
+    return <img src={this.getUserPicture(user)} alt={user.username} className={this.getClassName()} loading="lazy" />
   }
 }
 
