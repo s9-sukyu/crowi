@@ -728,7 +728,7 @@ $(function() {
       $userHtml.attr('href', '/user/' + user.username)
       $userHtml.attr('title', user.name)
 
-      var $userPicture = $('<img class="picture picture-xs picture-rounded">')
+      var $userPicture = $('<img class="picture picture-xs picture-rounded" loading="lazy">')
       $userPicture.attr('alt', user.name)
       $userPicture.attr('src', Crowi.userPicture(user))
 
