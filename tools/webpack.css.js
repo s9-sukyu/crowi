@@ -1,6 +1,8 @@
 const path = require('path')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 
+const BrotliPlugin = require('brotli-webpack-plugin')
+
 const isProduction = process.env.NODE_ENV === 'production'
 
 const extractSass = new ExtractTextPlugin({
@@ -63,6 +65,10 @@ const config = {
     //  './node_modules/highlight.js/styles/tomorrow-night.css',
     //  './node_modules/diff2html/dist/diff2html.css',
     // ]),
+    new BrotliPlugin({
+      test: /\.(?:css|svg)(\?.*)?$/i,
+      minRatio: 0.9,
+    }),
   ],
 }
 
