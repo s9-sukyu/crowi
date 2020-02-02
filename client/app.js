@@ -22,6 +22,8 @@ import RenameTree from 'components/RenameTree/RenameTree'
 import AdminShare from 'components/Admin/Share/AdminShare'
 import AdminRebuildSearch from 'components/Admin/AdminRebuildSearch'
 
+import DirectChildren from 'components/DirectChildren'
+
 if (!window) {
   window = {}
 }
@@ -87,3 +89,11 @@ Object.keys(componentMappings).forEach(key => {
 $('a[data-toggle="tab"][href="#revision-history"]').on('show.bs.tab', function() {
   ReactDOM.render(<PageHistory pageId={pageId} crowi={crowi} />, document.getElementById('revision-history'))
 })
+
+// サイドバーにその直下のページ一覧を追加
+{
+  const $parent = $('<div id="direct-children"></div>').appendTo('.page-meta')
+  if ($parent[0]) {
+    ReactDOM.render(<DirectChildren path={decodeURIComponent(location.pathname)} crowi={crowi} />, $parent[0])
+  }
+}
