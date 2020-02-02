@@ -10,8 +10,9 @@ const DEFAULT_SHOWN_USERS = 30
 export default class UserList extends React.Component {
   constructor(props) {
     super(props)
+
     this.state = {
-      isShownAll: false,
+      isShownAll: props.users.length < DEFAULT_SHOWN_USERS,
     }
   }
 
@@ -30,14 +31,6 @@ export default class UserList extends React.Component {
     }
 
     let isShownAll = this.state.isShownAll
-    const userLen = this.props.users.length
-    if (userLen < DEFAULT_SHOWN_USERS) {
-      this.setState({
-        isShownAll: true,
-      })
-      isShownAll = true
-    }
-
     const usersData = isShownAll ? this.props.users : this.props.users.slice(0, DEFAULT_SHOWN_USERS)
 
     const users = usersData.map(user => {
