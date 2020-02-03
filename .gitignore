@@ -1,8 +1,8 @@
 config/default.js
 node_modules/
 bower_components/
-public/js/*
-public/css/*
+!public/js/*
+!public/css/*
 public/uploads/*
 .env
 data
