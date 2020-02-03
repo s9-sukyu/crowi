@@ -12,7 +12,13 @@ export default class UserList extends React.Component {
     super(props)
 
     this.state = {
-      isShownAll: props.users.length < DEFAULT_SHOWN_USERS,
+      isShownAll: false,
+    }
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (nextProps.users.length < DEFAULT_SHOWN_USERS) {
+      this.setState({ isShownAll: true })
     }
   }
 
