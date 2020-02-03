@@ -45,10 +45,13 @@ export default class DirectChildren extends React.Component {
         path: this.props.path,
         offset,
       })
-      return res.pages.map(page => page.path).filter(path => this.checkDirectReg.test(path))
+      return {
+        directChildren: res.pages.map(page => page.path).filter(path => this.checkDirectReg.test(path)),
+        canShowMore: res.pages.length === PAGE_PER_REQUEST,
+      }
     } catch (e) {
       console.error(e)
-      return []
+      return { directChildren: [], canShowMore: false }
     }
   }
 
@@ -58,10 +61,10 @@ export default class DirectChildren extends React.Component {
     let count = start * REQUEST_PER_CLICK
     do {
       res = await this.getDirectChildren(count * PAGE_PER_REQUEST)
-      directChildren = directChildren.concat(res)
+      directChildren = directChildren.concat(res.directChildren)
       count++
-    } while (count < end * REQUEST_PER_CLICK && res.length === PAGE_PER_REQUEST)
-    return { directChildren, canShowMore: res.length === PAGE_PER_REQUEST }
+    } while (count < end * REQUEST_PER_CLICK && res.canShowMore)
+    return { directChildren, canShowMore: res.canShowMore }
   }
 
   render() {
