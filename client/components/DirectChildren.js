@@ -1,6 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import { Button } from 'react-bootstrap'
+
 const REQUEST_PER_CLICK = 3
 const PAGE_PER_REQUEST = 50
 
@@ -78,7 +80,15 @@ export default class DirectChildren extends React.Component {
             </li>
           ))}
         </ul>
-        {this.state.isLoading ? '読み込み中...' : this.state.canShowMore ? <button onClick={this.onShowMore}>もっと表示する</button> : ''}
+        {this.state.isLoading ? (
+          '読み込み中...'
+        ) : this.state.canShowMore ? (
+          <Button className="seen-user-show-more-button" style={{ display: 'block' }} onClick={this.onShowMore}>
+            もっと表示する
+          </Button>
+        ) : (
+          ''
+        )}
       </div>
     )
   }
