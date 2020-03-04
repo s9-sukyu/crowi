@@ -2,7 +2,11 @@
 
 const fs = require('fs')
 const pkgcloud = require('pkgcloud')
+const stream = require('stream')
+const { promisify } = require('util')
 const awsUploader = require('../crowi-fileupload-aws')
+
+const pipeline = promisify(stream.pipeline)
 
 module.exports = crowi => {
   const config = {
@@ -19,28 +23,21 @@ module.exports = crowi => {
   const swift = pkgcloud.storage.createClient(config)
 
   return {
-    uploadFile: (remote, contentType, fileStream, options) =>
-      new Promise((resolve, reject) => {
-        const uploadStream = swift.upload({ container: config.container, contentType, remote })
-        uploadStream.on('error', reject)
-        uploadStream.on('success', resolve)
-        fileStream.pipe(uploadStream)
-        fileStream.on('error', err => {
-          uploadStream.destroy(err)
-        })
-      }),
-    findDeliveryFile: (fileId, remote) =>
-      new Promise((resolve, reject) => {
-        const local = lib.createCacheFileName(fileId)
-        if (!lib.shouldUpdateCacheFile(local)) {
-          return resolve(local)
-        }
+    uploadFile: async (remote, contentType, fileStream, options) => {
+      const uploadStream = swift.upload({ container: config.container, contentType, remote })
 
-        const downloadStream = swift.download({ container: config.container, remote })
-        downloadStream.on('error', reject)
-        downloadStream.on('end', _ => resolve(local))
-        downloadStream.pipe(fs.createWriteStream(local))
-      }),
+      return pipeline(fileStream, uploadStream)
+    },
+    findDeliveryFile: async (fileId, remote) => {
+      const local = lib.createCacheFileName(fileId)
+      if (!lib.shouldUpdateCacheFile(local)) {
+        return local
+      }
+
+      const downloadStream = swift.download({ container: config.container, remote })
+      await pipeline(downloadStream, fs.createWriteStream(local))
+      return local
+    },
     deleteFile: (fileId, remote) =>
       new Promise((resolve, reject) => {
         swift.removeFile(config.container, remote, (err, result) => {
