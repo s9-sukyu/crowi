@@ -2,7 +2,7 @@ import MarkdownIt from 'markdown-it'
 
 import LinkPlugin from './LinkPlugin'
 import EmojiPlugin from './EmojiPlugin'
-const { useContainer, katexPlugin, markPlugin, createHighlightFunc } = require('traq-markdown-it')
+const { useContainer, katexPlugin, markPlugin, createHighlightFunc } = require('@traptitech/traq-markdown-it')
 
 export default class {
   constructor(crowi) {
