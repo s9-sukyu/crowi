@@ -3,7 +3,6 @@ services:
   crowi:
     image: docker.pkg.github.com/traptitech/crowi/crowi:${version}
     environment:
-      NODE_ENV: development
       MONGO_URI: mongodb://mongodb:27017/crowi
       REDIS_URL: redis://redis:6379/crowi
       FILE_UPLOAD:

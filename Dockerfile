@@ -1,6 +1,6 @@
 FROM node:12.14.1-buster-slim as builder
 
-ARG NODE_ENV="production"
+ARG NODE_ENV="development"
 
 ENV CROWI_VERSION v1.7.9
 ENV NODE_ENV ${NODE_ENV}
