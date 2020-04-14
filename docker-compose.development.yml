@@ -28,7 +28,7 @@ services:
   mongodb:
     image: mongo:3.6.3
     volumes:
-      - ./data/monogodb:/data/db
+      - mongodb:/data/db
     restart: unless-stopped
     ports:
       - 27017:27017
@@ -64,3 +64,6 @@ services:
     restart: unless-stopped
     ports:
       - 8080:8080
+
+volumes:
+  mongodb:
