@@ -2,6 +2,7 @@ version: '3'
 services:
   crowi:
     image: docker.pkg.github.com/traptitech/crowi/crowi:${version}
+    container_name: crowi
     environment:
       NODE_ENV: production
       MONGO_URI: mongodb://mongodb:27017/crowi
