@@ -593,6 +593,13 @@ $(function() {
 
       Crowi.correctHeaders('#revision-body-content')
       Crowi.revisionToc('#revision-body-content', '#revision-toc')
+
+      if (location.hash) {
+        const $id = document.getElementById(location.hash.slice(1))
+        if ($id) {
+          $id.scrollIntoView()
+        }
+      }
     }
 
     // header
