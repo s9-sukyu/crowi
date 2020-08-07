@@ -1,8 +1,8 @@
 import MarkdownIt from 'markdown-it'
 
 import LinkPlugin from './LinkPlugin'
-import EmojiPlugin from './EmojiPlugin'
-const { useContainer, katexPlugin, markPlugin, createHighlightFunc } = require('@traptitech/traq-markdown-it')
+import { emojis } from './EmojiCache'
+import { useContainer, katexPlugin, markPlugin, createHighlightFunc, stampCssPlugin } from '@traptitech/traq-markdown-it'
 
 export default class {
   constructor(crowi) {
@@ -14,7 +14,7 @@ export default class {
     })
 
     LinkPlugin.forEach(plugin => md.use(plugin))
-    md.use(EmojiPlugin)
+    stampCssPlugin(md, emojis)
     useContainer(md)
     md.use(markPlugin)
     md.use(katexPlugin, {

@@ -31,7 +31,7 @@
     "@fortawesome/fontawesome-free-webfonts": "^1.0.9",
     "@octokit/rest": "^15.18.3",
     "@slack/client": "~4.4.0",
-    "@traptitech/traq-markdown-it": "^2.0.1",
+    "@traptitech/traq-markdown-it": "^3.1.0",
     "async": "~1.5.0",
     "aws-sdk": "~2.88.0",
     "axios": "^0.19.0",
