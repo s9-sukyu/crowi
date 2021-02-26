@@ -367,6 +367,9 @@ $(function() {
     var $target = $(event.target)
     var pasteText = event.clipboardData.getData('text')
 
+    // Windowsでの改行ずれ防止のため
+    pasteText = pasteText.replace(/\r\n/g, '\n')
+
     var match = currentLine.text.match(/^(\s*(?:>|-|\+|\*|\d+\.) (?:\[(?:x| )\] )?)/)
     if (match) {
       if (pasteText.match(/(?:\r\n|\r|\n)/)) {
