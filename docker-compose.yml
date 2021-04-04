@@ -14,6 +14,8 @@ services:
       CONOHA_REGION:
       CONOHA_TENANT_ID:
       CONOHA_CONTAINER:
+      CROWI_ADMINS: "temma sappi_red"
+      CROWI_INVALIDATE_TOKENS: ""
     volumes:
       - /crowi/node_modules
     restart: unless-stopped

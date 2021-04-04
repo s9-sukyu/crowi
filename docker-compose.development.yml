@@ -13,6 +13,8 @@ services:
       ELASTICSEARCH_URI: elasticsearch:9200/
       PLANTUML_URI: //localhost:8080
       FILE_UPLOAD: local
+      CROWI_ADMINS: "temma sappi_red"
+      CROWI_INVALIDATE_TOKENS: ""
     volumes:
       - ./:/crowi
       - /crowi/node_modules
