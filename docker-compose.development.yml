@@ -53,7 +53,7 @@ services:
         soft: -1
         hard: -1
     volumes:
-      - ./data/elasticsearch:/usr/share/elasticsearch/data
+      - ./data/elasticsearch:/usr/lib/elasticsearch/data
     ports:
       - 9200:9200
 
