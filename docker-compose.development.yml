@@ -11,6 +11,8 @@ services:
       MONGO_URI: mongodb://mongodb:27017/crowi
       REDIS_URL: redis://redis:6379/crowi
       ELASTICSEARCH_URI: elasticsearch:9200
+      ELASTICSEARCH_USER: elastic
+      ELASTICSEARCH_PASSWORD: password
       PLANTUML_URI: //localhost:8080
       FILE_UPLOAD: local
       CROWI_ADMINS: "temma sappi_red hijiki51 yukikurage"
@@ -39,10 +41,14 @@ services:
       - 27017:27017
 
   elasticsearch:
-    image: "ghcr.io/traptitech/es-with-sudachi-crowi:6.8.9-2.1.0"
+    image: "ghcr.io/traptitech/es-with-sudachi:7.17.9-3.0.1"
     environment:
       bootstrap.memory_lock: "true"
       discovery.type: single-node
+      ELASTIC_PASSWORD: "password"
+      xpack.security.enabled: true
+      xpack.security.http.ssl.enabled: false
+      xpack.security.transport.ssl.enabled: false
     # healthcheck:
     #   test: curl -u elastic:elastic -s -f elasticsearch:9200/_cat/health >/dev/null || exit 1
     #   interval: 30s
